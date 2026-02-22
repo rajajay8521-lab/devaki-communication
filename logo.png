@@ -1,1 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Meri Website</title>
+</head>
+<body>
 
+    <!-- Header Start -->
+    <header>
+        <img src="ChatGPT Image Feb 21, 2026, 07_51_59 PM" alt="My Logo" width="150">
+    </header>
+    <!-- Header End -->
+
+    <h1>Welcome to My Website</h1>
+    <p>Yeh meri first website hai.</p>
+
+</body>
+</html>
