@@ -2,369 +2,250 @@
 <html lang="hi">
 <head>
     <meta charset="UTF-8">
-    <title>Meri Website</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meri Dukan</title>
     <style>
-        /* Reset & Basic Styling */
-        body {
-            margin: 0;
-            font-family: Arial, sans-serif;
-        }
+        /* Reset & Body */
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { font-family: Arial, sans-serif; background-color: #fef9f4; color: #333; }
 
-        /* Navbar Styling */
+        /* Navbar / Header */
         .navbar {
             display: flex;
-            justify-content: space-between; /* Logo left, menu right */
+            justify-content: space-between;
             align-items: center;
-            background-color: #333;
+            background-color: #2c3e50;
             padding: 10px 20px;
+            color: white;
+            flex-wrap: wrap;
         }
-
-        /* Logo Styling */
-        .navbar img {
-            width: 120px; /* Logo size */
+        .navbar-left {
+            display: flex;
+            align-items: center;
+            gap: 15px;
         }
-
-        /* Menu Styling */
-        .menu {
+        .navbar-left img {
+            width: 120px;
+        }
+        .store-info {
+            font-size: 14px;
+            line-height: 1.2;
+        }
+        .navbar-right {
             display: flex;
             gap: 20px;
         }
-
-        .menu a {
+        .navbar-right a {
             color: white;
             text-decoration: none;
             font-weight: bold;
-            transition: color 0.3s;
         }
+        .navbar-right a:hover { color: #f1c40f; }
 
-        .menu a:hover {
-            color: #ffcc00; /* Hover color */
-        }
+        /* Hamburger Menu */
+        .hamburger { display: none; flex-direction: column; cursor: pointer; }
+        .hamburger div { width: 25px; height: 3px; background-color: white; margin: 4px 0; }
 
-        /* Page content */
-        .content {
-            padding: 50px;
+        /* Hero Section */
+        .hero {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+            padding: 50px 20px;
+            background-color: #fff6e5;
             text-align: center;
+        }
+        .hero-text { flex: 1; min-width: 300px; margin: 10px; }
+        .hero-text h1 { font-size: 36px; margin-bottom: 10px; }
+        .hero-text p { font-size: 18px; margin-bottom: 20px; }
+        .hero-text button {
+            padding: 12px 25px;
+            background-color: #f39c12;
+            color: white;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+            border-radius: 5px;
+        }
+        .hero-text button:hover { background-color: #e67e22; }
+
+        .hero-img { flex: 1; min-width: 300px; margin: 10px; }
+        .hero-img img { width: 100%; max-width: 400px; }
+
+        /* Featured Products */
+        .products { text-align: center; padding: 50px 20px; }
+        .products h2 { margin-bottom: 30px; font-size: 28px; }
+        .product-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 20px; }
+        .product-card {
+            background-color: white;
+            padding: 15px;
+            border-radius: 10px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        .product-card img { width: 100%; border-radius: 5px; }
+        .product-card h3 { margin: 10px 0 5px; font-size: 18px; }
+        .product-card p { margin-bottom: 10px; font-size: 14px; }
+        .product-card button {
+            padding: 8px 12px;
+            background-color: #f39c12;
+            color: white;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        .product-card button:hover { background-color: #e67e22; }
+
+        /* About Section */
+        .about { display: flex; flex-wrap: wrap; align-items: center; padding: 50px 20px; background-color: #fff6e5; }
+        .about img { width: 100%; max-width: 400px; border-radius: 10px; margin: 10px; }
+        .about-text { flex: 1; min-width: 300px; margin: 10px; }
+        .about-text h2 { font-size: 28px; margin-bottom: 15px; }
+        .about-text p { font-size: 16px; margin-bottom: 20px; }
+        .about-text button {
+            padding: 10px 20px;
+            background-color: #f39c12;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .about-text button:hover { background-color: #e67e22; }
+
+        /* Testimonials */
+        .testimonials { text-align: center; padding: 50px 20px; }
+        .testimonial-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; }
+        .testimonial-card {
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        .testimonial-card img { width: 50px; height: 50px; border-radius: 50%; margin-bottom: 10px; }
+
+        /* Footer */
+        footer { background-color: #2c3e50; color: white; padding: 30px 20px; text-align: center; }
+        footer p, footer a { color: white; text-decoration: none; margin: 5px; display: block; }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .navbar-right { display: none; flex-direction: column; width: 100%; background-color: #34495e; margin-top: 10px; }
+            .navbar-right.show { display: flex; }
+            .hamburger { display: flex; }
+            .navbar-left { flex: 1 1 100%; justify-content: space-between; }
+            .hero { text-align: center; }
+            .about { flex-direction: column; }
         }
     </style>
 </head>
 <body>
 
-    <!-- Navbar Start -->
+    <!-- Navbar / Header -->
     <nav class="navbar">
-        <!-- Logo -->
-        <a href="index.html">
-            <img src="logo.png" alt="My Logo">
-        </a>
-
-        <!-- Menu Items -->
-        <div class="menu">
+        <div class="navbar-left">
+            <img src="logo.png" alt="Meri Dukan Logo">
+            <div class="store-info">
+                123 Bazar Road, Delhi<br>
+                Phone: 9876543210
+            </div>
+            <div class="hamburger" onclick="toggleMenu()">
+                <div></div><div></div><div></div>
+            </div>
+        </div>
+        <div class="navbar-right" id="menu">
             <a href="#">Home</a>
-            <a href="#">About</a>
-            <a href="#">Services</a>
+            <a href="#">Products</a>
+            <a href="#">About Us</a>
             <a href="#">Contact</a>
         </div>
     </nav>
-    <!-- Navbar End -->
 
-    <!-- Page Content -->
-    <div class="content">
-        <h1>Welcome to My Website</h1>
-        <p>Yeh meri professional navbar ke saath website hai.</p>
-    </div>
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-text">
+            <h1>Welcome to Meri Dukan</h1>
+            <p>Aapka apna vishwasniya store! Quality products, friendly service.</p>
+            <button>Shop Now</button>
+        </div>
+        <div class="hero-img">
+            <img src="logo.png" alt="Meri Dukan Storefront">
+        </div>
+    </section>
 
-</body>
-</html><!DOCTYPE html>
-<html>
-<head>
-    <title>Meri Website</title>
-</head>
-<body>
+    <!-- Featured Products -->
+    <section class="products">
+        <h2>Our Featured Products</h2>
+        <div class="product-grid">
+            <div class="product-card">
+                <img src="https://via.placeholder.com/150x150.png?text=Vegetable+Oil" alt="Vegetable Oil">
+                <h3>Vegetable Oil</h3>
+                <p>Starting at ₹199</p>
+                <button>View Products</button>
+            </div>
+            <div class="product-card">
+                <img src="https://via.placeholder.com/150x150.png?text=Fresh+Fruits" alt="Fresh Fruits">
+                <h3>Fresh Fruits</h3>
+                <p>Starting at ₹199</p>
+                <button>View All Products</button>
+            </div>
+            <div class="product-card">
+                <img src="https://via.placeholder.com/150x150.png?text=Rice+%26+Pulses" alt="Rice & Pulses">
+                <h3>Rice & Pulses</h3>
+                <p>Starting at ₹199</p>
+                <button>View All Products</button>
+            </div>
+            <div class="product-card">
+                <img src="https://via.placeholder.com/150x150.png?text=Dairy+Products" alt="Dairy Products">
+                <h3>Dairy Products</h3>
+                <p>Starting at ₹199</p>
+                <button>View All Products</button>
+            </div>
+        </div>
+    </section>
 
-   <!DOCTYPE html>
-<html lang="hi">
-<head>
-    <meta charset="UTF-8">
-    <title>Meri Website</title>
-    <style>
-        /* Basic styling for header and logo */
-        body {
-            font-family: Arial, sans-serif;
-            text-align: center;
-            margin: 0;
-            padding: 0;
+    <!-- About Section -->
+    <section class="about">
+        <img src="logo.png" alt="Meri Dukan About">
+        <div class="about-text">
+            <h2>About Meri Dukan</h2>
+            <p>Meri Dukan is your trusted neighborhood store offering high-quality groceries, fresh produce, and daily essentials. We provide friendly service and the best products for our customers.</p>
+            <button>Learn More</button>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="testimonials">
+        <h2>What Our Customers Say</h2>
+        <div class="testimonial-cards">
+            <div class="testimonial-card">
+                <img src="https://via.placeholder.com/50" alt="Priya Sharma">
+                <strong>Priya Sharma</strong>
+                <p>Great variety of products and very friendly staff. Always a pleasure to shop at Meri Dukan!</p>
+            </div>
+            <div class="testimonial-card">
+                <img src="https://via.placeholder.com/50" alt="Suresh Verma">
+                <strong>Suresh Verma</strong>
+                <p>Excellent quality and great service. My go-to store for all my household needs!</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>123 Bazar Road, Delhi</p>
+        <p>Phone: 9876543210</p>
+        <div>
+            <a href="#">Facebook</a> | 
+            <a href="#">Instagram</a> | 
+            <a href="#">WhatsApp</a>
+        </div>
+    </footer>
+
+    <script>
+        function toggleMenu() {
+            document.getElementById('menu').classList.toggle('show');
         }
-        header {
-            background-color: #f2f2f2;
-            padding: 20px;
-        }
-        header img {
-            width: 150px; /* Logo size */
-        }
-        h1 {
-            margin-top: 50px;
-        }
-    </style>
-</head>
-<body>
-
-    <!-- Header with Logo -->
-    <header>
-        <!-- Agar logo same folder me hai -->
-        <img src="WhatsApp Image 2025-12-20 at 13.54.56 (1).jpeg" alt="My Logo">
-
-        <!-- Agar logo images folder me hai, uncomment ye line aur comment upar wali line -->
-        <!-- <img src="images/logo.png" alt="My Logo"> -->
-    </header>
-
-    <!-- Page Content -->
-    <h1>Welcome to My Website</h1>
-    <p>Yeh meri first website hai. Logo upar header me dikha raha hai.</p>
-
-</body>
-</html>
-
-</body>
-</html><!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="Devaki Communication - All Online Services Available Here. PAN, Aadhar, Passport, Money Transfer, Print & More.">
-<title>Devki Communication | Online Services</title>
-<img src="ChatGPT Image Feb 21, 2026, 07_51_59 PM" width="300">
-<style>
-*{margin:0;padding:0;box-sizing:border-box;font-family:Arial;}
-
-body{
-background:#f4f6f9;
-transition:0.3s;
-}
-
-header{
-background:linear-gradient(90deg,#007bff,#00c853);
-color:white;
-padding:15px;
-text-align:center;
-}
-
-nav{
-background:#111;
-padding:12px;
-text-align:center;
-}
-
-nav a{
-color:white;
-margin:15px;
-text-decoration:none;
-font-weight:bold;
-}
-
-.hero{
-padding:60px 20px;
-text-align:center;
-background:#e3f2fd;
-animation:fadeIn 2s;
-}
-
-@keyframes fadeIn{
-from{opacity:0;}
-to{opacity:1;}
-}
-
-.services{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-gap:20px;
-padding:40px;
-}
-<section style="padding:40px;background:#f1f1f1;text-align:center;">
-<h2>Customer Reviews</h2>
-
-<div style="max-width:800px;margin:auto;">
-
-<p>⭐⭐⭐⭐⭐<br>
-"Bahut fast service milti hai. PAN card 3 din me mil gaya." <br>
-— Ravi Kumar</p>
-
-<br>
-
-<p>⭐⭐⭐⭐⭐<br>
-"Devaki Communication best cyber cafe hai area me." <br>
-— Sunita Devi</p>
-
-</div>
-</section>
-.card{
-background:white;
-padding:20px;
-border-radius:12px;
-box-shadow:0 4px 15px rgba(0,0,0,0.1);
-transition:0.3s;
-text-align:center;
-}
-
-.card:hover{
-transform:translateY(-8px);
-}
-
-.gallery{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(150px,1fr));
-gap:10px;
-padding:20px;
-}
-
-.gallery img{
-width:100%;
-border-radius:10px;
-}
-
-.form-section{
-padding:40px;
-background:#e8f5e9;
-text-align:center;
-}
-
-input,textarea{
-width:80%;
-padding:10px;
-margin:8px;
-border-radius:6px;
-border:1px solid #ccc;
-}
-
-button{
-padding:10px 20px;
-background:#007bff;
-color:white;
-border:none;
-border-radius:6px;
-cursor:pointer;
-}
-
-.qr{
-text-align:center;
-padding:30px;
-}
-
-footer{
-background:#111;
-color:white;
-text-align:center;
-padding:15px;
-}
-
-.whatsapp{
-position:fixed;
-bottom:20px;
-right:20px;
-background:#25D366;
-color:white;
-padding:15px;
-border-radius:50%;
-text-decoration:none;
-font-size:20px;
-}
-
-.toggle{
-position:fixed;
-top:20px;
-right:20px;
-padding:6px 12px;
-cursor:pointer;
-}
-
-.dark{
-background:#121212;
-color:white;
-}
-
-.dark .card{background:#1e1e1e;}
-</style>
-</head>
-
-<body>
-
-<button class="toggle" onclick="darkMode()">🌙</button>
-
-<header>
-<h2>Devaki Communication</h2>
-<p>All Online Services Available Here</p>
-</header>
-
-<nav>
-<a href="#">Home</a>
-<a href="#services">Services</a>
-<a href="#gallery">Gallery</a>
-<a href="#contact">Contact</a>
-</nav>
-
-<section class="hero">
-<h1>Fast • Secure • Reliable</h1>
-<p>Your Trusted Cyber Cafe & Online Service Center</p>
-</section>
-
-<section id="services" class="services">
-<div class="card">Aadhar Card Service</div>
-<div class="card">PAN Card Apply</div>
-<div class="card">Online Form Filling</div>
-<div class="card">Money Transfer</div>
-<div class="card">Passport Service</div>
-<div class="card">Print & Photocopy</div>
-</section>
-
-<section id="gallery" class="gallery">
-<img src="https://via.placeholder.com/300">
-<img src="https://via.placeholder.com/300">
-<img src="https://via.placeholder.com/300">
-<img src="https://via.placeholder.com/300">
-</section>
-
-<section class="form-section" id="contact">
-<h2>Customer Enquiry</h2>
-<form>
-<input type="text" placeholder="Your Name" required><br>
-<input type="tel" placeholder="Mobile Number" required><br>
-<textarea placeholder="Your Message"></textarea><br>
-<button type="submit">Send Message</button>
-</form>
-
-<br><br>
-
-<h3>Our Location</h3>
-<iframe 
-src="https://maps.google.com/maps?q=india&t=&z=13&ie=UTF8&iwloc=&output=embed"
-width="90%" height="250" style="border:0;"></iframe>
-
-</section>
-
-<section class="qr">
-<h3>Scan & Pay</h3>
-<img src="https://via.placeholder.com/200" alt="QR Code">
-</section>
-
-<footer>
-© 2026 Devaki Communication | All Rights Reserved
-</footer>
-
-<a href="https://wa.me/919876543210" class="whatsapp">💬</a>
-
-<script>
-function darkMode(){
-document.body.classList.toggle("dark");
-}
-</script>
+    </script>
 
 </body>
 </html>
-
-
-
-
-
-
-
-
-
