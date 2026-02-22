@@ -1,4 +1,80 @@
 <!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <title>Meri Website</title>
+    <style>
+        /* Reset & Basic Styling */
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        /* Navbar Styling */
+        .navbar {
+            display: flex;
+            justify-content: space-between; /* Logo left, menu right */
+            align-items: center;
+            background-color: #333;
+            padding: 10px 20px;
+        }
+
+        /* Logo Styling */
+        .navbar img {
+            width: 120px; /* Logo size */
+        }
+
+        /* Menu Styling */
+        .menu {
+            display: flex;
+            gap: 20px;
+        }
+
+        .menu a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s;
+        }
+
+        .menu a:hover {
+            color: #ffcc00; /* Hover color */
+        }
+
+        /* Page content */
+        .content {
+            padding: 50px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navbar Start -->
+    <nav class="navbar">
+        <!-- Logo -->
+        <a href="index.html">
+            <img src="logo.png" alt="My Logo">
+        </a>
+
+        <!-- Menu Items -->
+        <div class="menu">
+            <a href="#">Home</a>
+            <a href="#">About</a>
+            <a href="#">Services</a>
+            <a href="#">Contact</a>
+        </div>
+    </nav>
+    <!-- Navbar End -->
+
+    <!-- Page Content -->
+    <div class="content">
+        <h1>Welcome to My Website</h1>
+        <p>Yeh meri professional navbar ke saath website hai.</p>
+    </div>
+
+</body>
+</html><!DOCTYPE html>
 <html>
 <head>
     <title>Meri Website</title>
@@ -283,6 +359,7 @@ document.body.classList.toggle("dark");
 
 </body>
 </html>
+
 
 
 
